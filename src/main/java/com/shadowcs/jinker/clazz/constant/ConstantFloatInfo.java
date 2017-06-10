@@ -21,4 +21,27 @@ public class ConstantFloatInfo extends ConstantPoolInfo {
 	public float getFloat() {
 		return this.bytes;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Float.floatToIntBits(bytes);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		if(!super.equals(obj)) return false;
+		if(getClass() != obj.getClass()) return false;
+		ConstantFloatInfo other = (ConstantFloatInfo) obj;
+		if(Float.floatToIntBits(bytes) != Float.floatToIntBits(other.bytes)) return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ConstantFloatInfo [bytes=" + bytes + "]";
+	}
 }

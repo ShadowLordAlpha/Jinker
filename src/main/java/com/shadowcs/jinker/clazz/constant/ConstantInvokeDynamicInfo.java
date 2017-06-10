@@ -26,4 +26,29 @@ public class ConstantInvokeDynamicInfo extends ConstantPoolInfo {
 	public int getNameAndTypeIndex() {
 		return this.nameAndTypeIndex;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + bootstrapMethodAttrIndex;
+		result = prime * result + nameAndTypeIndex;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		if(!super.equals(obj)) return false;
+		if(getClass() != obj.getClass()) return false;
+		ConstantInvokeDynamicInfo other = (ConstantInvokeDynamicInfo) obj;
+		if(bootstrapMethodAttrIndex != other.bootstrapMethodAttrIndex) return false;
+		if(nameAndTypeIndex != other.nameAndTypeIndex) return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ConstantInvokeDynamicInfo [bootstrapMethodAttrIndex=" + bootstrapMethodAttrIndex + ", nameAndTypeIndex=" + nameAndTypeIndex + "]";
+	}
 }

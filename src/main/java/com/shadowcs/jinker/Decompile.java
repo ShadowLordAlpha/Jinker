@@ -9,9 +9,11 @@ import com.shadowcs.jinker.clazz.constant.ConstantType;
 
 public class Decompile {
 
-	private Decompile() {
+	private Decompile(String... file) {
 
 	}
+	
+	
 
 	// temp method
 	public static String decompileClassInfo(ClassInfo classInfo) {
@@ -27,7 +29,7 @@ public class Decompile {
 				if(!classList.contains(cInfo)) {
 					classList.add((ConstantClassInfo) cInfo);
 				}
-				System.out.println("[LOG] Value: " + cInfo.getConstantType() + " " + cInfo.getClass().getName());
+				System.out.println("[LOG] Value: " + cInfo.getConstantType() + " " + cInfo);
 			}
 		}
 

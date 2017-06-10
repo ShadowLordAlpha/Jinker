@@ -6,12 +6,11 @@ import java.io.IOException;
 public class AttributeInfo {
 
 	private int attributeNameIndex;
-	private int attributeLength;
 	private byte[] info;
 	
 	public AttributeInfo(DataInput data) throws IOException {
 		attributeNameIndex = data.readUnsignedShort();
-		attributeLength = data.readInt();
+		int attributeLength = data.readInt();
 		info = new byte[attributeLength];
 		data.readFully(info);
 	}

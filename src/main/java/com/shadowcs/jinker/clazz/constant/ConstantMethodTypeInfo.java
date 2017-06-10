@@ -20,4 +20,27 @@ public class ConstantMethodTypeInfo extends ConstantPoolInfo {
 	public int getDescriptorIndex() {
 		return this.descriptorIndex;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + descriptorIndex;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		if(!super.equals(obj)) return false;
+		if(getClass() != obj.getClass()) return false;
+		ConstantMethodTypeInfo other = (ConstantMethodTypeInfo) obj;
+		if(descriptorIndex != other.descriptorIndex) return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ConstantMethodTypeInfo [descriptorIndex=" + descriptorIndex + "]";
+	}
 }

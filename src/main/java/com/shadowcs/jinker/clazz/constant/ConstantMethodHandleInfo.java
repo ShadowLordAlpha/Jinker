@@ -28,4 +28,29 @@ public class ConstantMethodHandleInfo extends ConstantPoolInfo {
 	public int getReferenceIndex() {
 		return this.referenceIndex;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + referenceIndex;
+		result = prime * result + referenceKind;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		if(!super.equals(obj)) return false;
+		if(getClass() != obj.getClass()) return false;
+		ConstantMethodHandleInfo other = (ConstantMethodHandleInfo) obj;
+		if(referenceIndex != other.referenceIndex) return false;
+		if(referenceKind != other.referenceKind) return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ConstantMethodHandleInfo [referenceKind=" + referenceKind + ", referenceIndex=" + referenceIndex + "]";
+	}
 }

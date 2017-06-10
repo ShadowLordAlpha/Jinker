@@ -19,4 +19,27 @@ public class ConstantLongInfo extends ConstantPoolInfo {
 	public long getLong() {
 		return this.value;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + (int) (value ^ (value >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		if(!super.equals(obj)) return false;
+		if(getClass() != obj.getClass()) return false;
+		ConstantLongInfo other = (ConstantLongInfo) obj;
+		if(value != other.value) return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ConstantLongInfo [value=" + value + "]";
+	}
 }
