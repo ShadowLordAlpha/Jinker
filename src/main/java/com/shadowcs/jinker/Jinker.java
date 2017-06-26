@@ -1,31 +1,24 @@
 package com.shadowcs.jinker;
 
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import com.shadowcs.jinker.clazz.ClassInfo;
-import com.shadowcs.jinker.util.CliArgs;
+import java.io.StringWriter;
+import com.shadowcs.jinker.java.JavaSource;
+import com.shadowcs.jinker.util.arg.CliParser;
+import com.shadowcs.jinker.util.arg.Option;
 
 public class Jinker {
 	
-	
-	public Jinker() {
+	@Option
+	private boolean help;
+
+	public static void main(String[] args) {
+		StringWriter sw = new StringWriter();
 		try {
-			System.out.println(Decompile.decompileClassInfo(new ClassInfo(new DataInputStream(new FileInputStream("CliArgs.class")))));
-		} catch(FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			new JavaSource().setPackage("test").write(sw);
 		} catch(IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	public static void main(String... args) {
-		
-		CliArgs cliArgs = new CliArgs(args);
-		
-		new Jinker();
+		System.out.println(sw);
 	}
 }
